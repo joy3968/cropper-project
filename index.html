@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script><!-- jQuery is required -->
+    <script src="/node_modules/cropperjs/dist/cropper.js"></script><!-- Cropper.js is required -->
+    <link  href="/node_modules/cropperjs/dist/cropper.css" rel="stylesheet">
+    <script src="/node_modules/jquery-cropper/dist/jquery-cropper.js"></script>
+
+    <style>
+        /* Limit image width to avoid overflow the container */
+        img {
+            max-width: 100%; /* This rule is very important, please do not ignore this! */
+        }
+    </style>
+
+    <title>Cropper Project</title>
+</head>
+    <body>
+        <!-- Wrap the image or canvas element with a block element (container) -->
+        <div class="container">
+            <img id="image" src="/images/service_home_04.png">
+        </div>
+    </body>
+
+    <script>
+        var $image = $('#image');
+
+        $image.cropper({
+        aspectRatio: 16 / 9,
+        crop: function(event) {
+            console.log(event.detail.x);
+            console.log(event.detail.y);
+            console.log(event.detail.width);
+            console.log(event.detail.height);
+            console.log(event.detail.rotate);
+            console.log(event.detail.scaleX);
+            console.log(event.detail.scaleY);
+        }
+        });
+
+        // Get the Cropper.js instance after initialized
+        var cropper = $image.data('cropper');
+
+    </script>
+</html>
